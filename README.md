@@ -6,4 +6,4 @@ The terraform files here are responsible for managing the following structure:
  - Service
  - Cluster
  - Security Group
- - Data vpc
+ - Vpc and subnets

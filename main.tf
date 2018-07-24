@@ -32,7 +32,7 @@ resource "aws_ecs_service" "service" {
   launch_type      = "FARGATE"
 
   network_configuration {
-    subnets          = ["subnet-cb9054f5", "subnet-cb9054f5"]
+    subnets          = ["${data.aws_subnet_ids.subnet_ids.ids}"]
     assign_public_ip = true
     security_groups  = ["${aws_security_group.security-group.id}"]
   }
