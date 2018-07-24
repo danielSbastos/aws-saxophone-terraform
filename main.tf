@@ -34,6 +34,26 @@ resource "aws_ecs_service" "service" {
   network_configuration {
     subnets          = ["subnet-cb9054f5", "subnet-cb9054f5"]
     assign_public_ip = true
-    security_groups  = ["sg-3670ff7c"]
+    security_groups  = ["${aws_security_group.security-group.id}"]
+  }
+}
+
+resource "aws_security_group" "security-group" {
+  name        = "allow_port_400"
+  description = "Allow inbound traffic from port 4000"
+  vpc_id      = "${data.aws_vpc.vpc.id}"
+
+  ingress {
+    from_port   = 4000
+    to_port     = 4000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }

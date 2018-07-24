@@ -5,3 +5,5 @@ The terraform files here are responsible for managing the following structure:
  - Task definition
  - Service
  - Cluster
+ - Security Group
+ - Data vpc
